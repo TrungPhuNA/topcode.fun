@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->to('/payment');
+});
+
+Route::group(['prefix' => 'payment','namespace' => 'Payment'], function(){
+    Route::get('','PaymentController@index');
+    Route::get('create','PaymentController@create');
+    Route::post('create','PaymentController@store');
 });
