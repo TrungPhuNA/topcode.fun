@@ -47,12 +47,15 @@
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
-                    <li class="nav-item">
-{{--                        <a class="nav-link" href="{{ route($item['route']) }}" title="{{ $item['name'] }}">--}}
-{{--                            <span data-feather="{{ $item['icon'] }}"></span>--}}
-{{--                            {{ $item['name'] }}--}}
-{{--                        </a>--}}
-                    </li>
+                    @foreach(config('nav') as $item)
+                        <li class="nav-item">
+                            <a class="nav-link {{  in_array(Request::segment(2), $item['prefix']) ? 'active' : '' }}" href="{{ route($item['route']) }}" title="{{ $item['name'] }}">
+                                <span data-feather="{{ $item['icon'] }}"></span>
+                                {{ $item['name'] }}
+                            </a>
+                        </li>
+                    @endforeach
+
                 </ul>
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                     <span>-----------</span>
