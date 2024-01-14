@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'payment','namespace' => 'Payment'], function(){
-    Route::get('','PaymentController@index');
+    Route::get('','PaymentController@index')->name('get.payment.index');
     Route::get('create','PaymentController@create');
     Route::post('create','PaymentController@store');
 });

@@ -9,19 +9,21 @@
             </div>
             <h4>Chọn phương thức thanh toán</h4>
             <div class="form-group">
-                <h5>Cách 1: Chuyển hướng sang Cổng VNPAY chọn phương thức thanh toán</h5>
+                <h5>QR Code Hoạc Chuyển Khoản</h5>
                 <input type="radio" Checked="True" id="bankCode" name="bankCode" value="">
-                <label for="bankCode">Cổng thanh toán VNPAYQR</label><br>
+                <label for="bankCode">Cổng thanh toán QR CODE</label><br>
+                <input type="radio"  id="bankCode" name="bankCode" value="payWithATM">
+                <label for="bankCode">Chuyển quản</label><br>
 
-                <h5>Cách 2: Tách phương thức tại site của đơn vị kết nối</h5>
-                <input type="radio" id="bankCode" name="bankCode" value="VNPAYQR">
-                <label for="bankCode">Thanh toán bằng ứng dụng hỗ trợ VNPAYQR</label><br>
+{{--                <h5>Cách 2: Tách phương thức tại site của đơn vị kết nối</h5>--}}
+{{--                <input type="radio" id="bankCode" name="bankCode" value="VNPAYQR">--}}
+{{--                <label for="bankCode">Thanh toán bằng ứng dụng hỗ trợ VNPAYQR</label><br>--}}
 
-                <input type="radio" id="bankCode" name="bankCode" value="VNBANK">
-                <label for="bankCode">Thanh toán qua thẻ ATM/Tài khoản nội địa</label><br>
+{{--                <input type="radio" id="bankCode" name="bankCode" value="VNBANK">--}}
+{{--                <label for="bankCode">Thanh toán qua thẻ ATM/Tài khoản nội địa</label><br>--}}
 
-                <input type="radio" id="bankCode" name="bankCode" value="INTCARD">
-                <label for="bankCode">Thanh toán qua thẻ quốc tế</label><br>
+{{--                <input type="radio" id="bankCode" name="bankCode" value="INTCARD">--}}
+{{--                <label for="bankCode">Thanh toán qua thẻ quốc tế</label><br>--}}
 
             </div>
             <div class="form-group">
@@ -37,6 +39,8 @@
                 <label for="language">VNPAY</label><br>
                 <input type="radio"  name="service" value="nganluong">
                 <label for="language">Ngân Lượng</label><br>
+                <input type="radio"  name="service" value="momo">
+                <label for="language">Momo</label><br>
             </div>
             <button type="submit" class="btn btn-default" href>Thanh toán</button>
         </form>

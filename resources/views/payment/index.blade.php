@@ -19,6 +19,7 @@
             <tr>
                 <th>#</th>
                 <th style="width: 120px;text-align: center">Service</th>
+                <th style="width: 120px;text-align: center">Guest</th>
                 <th style="width: 120px;text-align: center">Code</th>
                 <th>txnref</th>
 {{--                <th>transaction_no</th>--}}
@@ -34,6 +35,7 @@
             @foreach($payments ?? [] as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
+                    <td style="text-align: center">{{ $item->service }}</td>
                     <td style="text-align: center">{{ $item->service_code }}</td>
                     <td style="text-align: center">{{ $item->tmn_code }}</td>
                     <td>{{ $item->txnref }}</td>
