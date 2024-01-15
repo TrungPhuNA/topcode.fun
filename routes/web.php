@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect()->to('/payment');
 });
+Route::get('view-logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 
 Route::group(['prefix' => 'payment','namespace' => 'Payment'], function(){
     Route::get('','PaymentController@index')->name('get.payment.index');
     Route::get('create','PaymentController@create');
+    Route::get('webhook','PaymentController@webhook')->name('get.payment.webhook');
     Route::post('create','PaymentController@store');
 });

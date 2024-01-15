@@ -27,7 +27,10 @@ class PaymentController extends Controller
 
         $payments = PaymentTransaction::whereRaw(1);
         if ($request->service) {
-            $payments->where('service_code', 'like', '%' . $request->service . '%');
+            $payments->where('service',$request->service);
+        }
+        if ($request->service_code) {
+            $payments->where('service_code', 'like', '%' . $request->service_code . '%');
         }
         $payments = $payments->orderByDesc('id')->paginate(30);
 

@@ -8,7 +8,15 @@
         <form class="form-inline">
             <div class="form-group mb-2 mr-2">
                 <label for="inputPassword2" class="sr-only">Service</label>
-                <input type="text" name="service" class="form-control" value="{{ Request::get('service') }}" placeholder="Mã Service">
+                <select class="form-control" name="service">
+                    <option value="">--Chọn dịch vụ--</option>
+                    <option value="vnpay" {{ Request::get('service') == 'vnpay' ? : '' }}>Vnpay</option>
+                    <option value="momo" {{ Request::get('service') == 'momo' ? : '' }}>MoMo</option>
+                </select>
+            </div>
+            <div class="form-group mb-2 mr-2">
+                <label for="inputPassword2" class="sr-only">Mã KH</label>
+                <input type="text" name="service_code" class="form-control" value="{{ Request::get('service_code') }}" placeholder="Service Code">
             </div>
             <button type="submit" class="btn btn-primary mb-2">Find</button>
         </form>
