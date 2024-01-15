@@ -34,12 +34,12 @@
     <input class="form-control form-control-dark w-80" type="text" placeholder="Search" aria-label="Search">
     <div class="dropdown" style="margin-right: 10px;">
         <button class="btn dropdown-toggle" style="background: none;color: white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="" onerror="this.src='https://123code.net/images/preloader.png';" style="width: 40px;height: 40px;border-radius: 50%" alt="">
+            <img src="" onerror="this.src='/images/laravel-featured.png';" style="width: 40px;height: 40px;border-radius: 50%;object-fit: cover" alt="">
         </button>
-{{--        <div class="dropdown-menu" style="left: unset;right: 10px" aria-labelledby="dropdownMenu2">--}}
+        <div class="dropdown-menu" style="left: unset;right: 10px" aria-labelledby="dropdownMenu2">
 {{--            <a href="{{ route('get_admin.profile.index') }}" class="dropdown-item" title="Cập nhật thông tin">Cập nhật thông tin</a>--}}
-{{--            <a href="{{ route('get_admin.logout') }}" title="Đăng xuất" class="dropdown-item">Đăng xuất</a>--}}
-{{--        </div>--}}
+            <a href="{{ route('get.logout') }}" title="Đăng xuất" class="dropdown-item">Đăng xuất</a>
+        </div>
     </div>
 </nav>
 <div class="container-fluid">

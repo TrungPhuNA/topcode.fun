@@ -13,8 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('dang-nhap',[\App\Http\Controllers\Auth\AuthController::class,'login'])->name('get.login');
+Route::post('dang-nhap',[\App\Http\Controllers\Auth\AuthController::class,'postLogin'])->name('post.login');
+Route::get('dang-xuat',[\App\Http\Controllers\Auth\AuthController::class,'logout'])->name('get.logout');
+Route::get('quen-mat-khau',[\App\Http\Controllers\Auth\AuthController::class,'restartPassword'])->name('get.restart_password');
+Route::post('quen-mat-khau',[\App\Http\Controllers\Auth\AuthController::class,'checkRestartPassword']);
+
+Route::get('thong-bao-cap-khau-moi',[\App\Http\Controllers\Auth\AuthController::class,'alertNewPassword'])->name('get.alert_new_password');
+Route::get('mat-khau-moi',[\App\Http\Controllers\Auth\AuthController::class,'newPassword'])->name('get.new_password');
+Route::post('mat-khau-moi',[\App\Http\Controllers\Auth\AuthController::class,'processNewPassword']);
+
+Route::get('dang-ky',[\App\Http\Controllers\Auth\AuthController::class,'register'])->name('get.register');
+Route::post('dang-ky',[\App\Http\Controllers\Auth\AuthController::class,'postRegister'])->name('post.register');
 Route::get('/', function () {
-    return redirect()->to('/payment');
+    return view('welcome');
+//    return redirect()->to('/payment');
 });
 Route::get('view-logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 
