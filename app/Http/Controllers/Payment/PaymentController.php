@@ -202,8 +202,8 @@ class PaymentController extends Controller
 
     protected function createPaymentVnpay(Request $request)
     {
-        $vnp_TmnCode = "N52FKIUG"; //Mã định danh merchant kết nối (Terminal Id)
-        $vnp_HashSecret = "TSIRMJKBXWGVEZWEINMWHTCTDKCAVPYA"; //Secret key
+        $vnp_TmnCode = $request->vnp_tmncode ?? "N52FKIUG"; //Mã định danh merchant kết nối (Terminal Id)
+        $vnp_HashSecret = $request->vnp_secret ?? "TSIRMJKBXWGVEZWEINMWHTCTDKCAVPYA"; //Secret key
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = "https://123code.net/payment";
         $vnp_apiUrl = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html";
