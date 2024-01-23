@@ -22,5 +22,15 @@
 
 #MOMO
 `
+    https://developer.paypal.com/dashboard/accounts
     https://developers.momo.vn/v3/vi/docs/payment/onboarding/test-instructions/
+`
+
+#PAYPAL
+`
+    https://www.sandbox.paypal.com/myaccount/summary?intl=0
+    https://medium.com/geekculture/paypal-payment-gateway-integration-with-laravel-ebebc7ccf470
+    Tài khoản test
+    TK: sb-xmxij16980134@business.example.com/oi9_m_KW
+    TK: sb-p7pju16979920@business.example.com/7%%p8ioS
 `

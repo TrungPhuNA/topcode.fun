@@ -37,3 +37,8 @@ Route::group(['prefix' => 'payment','namespace' => 'Payment'], function(){
     Route::get('webhook','PaymentController@webhook')->name('get.payment.webhook');
     Route::post('create','PaymentController@store');
 });
+
+Route::get('create-transaction', [\App\Http\Controllers\PayPalController::class, 'createTransaction'])->name('createTransaction');
+Route::get('process-transaction', [\App\Http\Controllers\PayPalController::class, 'processTransaction'])->name('processTransaction');
+Route::get('success-transaction', [\App\Http\Controllers\PayPalController::class, 'successTransaction'])->name('successTransaction');
+Route::get('cancel-transaction', [\App\Http\Controllers\PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
