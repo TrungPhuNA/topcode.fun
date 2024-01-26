@@ -25,41 +25,31 @@
         <table class="table table-striped table-sm">
             <thead>
             <tr>
-                <th>#</th>
-                <th style="width: 120px;text-align: center">Service</th>
-                <th style="width: 120px;text-align: center">Guest</th>
-                <th style="width: 120px;text-align: center">Code</th>
-                <th>txnref</th>
-{{--                <th>transaction_no</th>--}}
-                <th>note</th>
-{{--                <th>card_type</th>--}}
-{{--                <th>bank_code</th>--}}
-                <th>Tổng tiền</th>
-                <th>Trạng thái</th>
-                <th>Ngày tạo</th>
+                <th>ID</th>
+                <th>Language</th>
+                <th>PartnerCode</th>
+                <th>Service</th>
+                <th>IdentifierId</th>
+                <th>Amount</th>
+                <th>Create</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($payments ?? [] as $item)
+            @foreach($transactions ?? [] as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td style="text-align: center">{{ $item->service }}</td>
-                    <td style="text-align: center">{{ $item->service_code }}</td>
-                    <td style="text-align: center">{{ $item->tmn_code }}</td>
-                    <td>{{ $item->txnref }}</td>
-{{--                    <td>{{ $item->transaction_no }}</td>--}}
-                    <td>{{ $item->note }}</td>
-{{--                    <td>{{ $item->card_type }}</td>--}}
-{{--                    <td>{{ $item->bank_code }}</td>--}}
+                    <td>{{ $item->language }}</td>
+                    <td>{{ $item->partner_code }}</td>
+                    <td>{{ $item->service }}</td>
+                    <td>{{ $item->identifier_id }}</td>
                     <td>{{ number_format($item->amount,0,',','.') }}</td>
-                    <td>{{ $item->status }}</td>
                     <td>{{ $item->created_at }}</td>
                 </tr>
             @endforeach
             </tbody>
         </table>
         <div class="col-12">
-            {!! $payments->appends($query ?? [])->links('vendor.pagination.bootstrap-4') !!}
+            {!! $transactions->appends($query ?? [])->links('vendor.pagination.bootstrap-4') !!}
         </div>
     </div>
 @stop

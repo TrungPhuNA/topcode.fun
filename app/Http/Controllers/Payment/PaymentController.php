@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
 use App\Models\PaymentTransaction;
+use App\Models\Transaction;
 use App\Payment\NL_Checkout;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -12,31 +13,17 @@ class PaymentController extends Controller
 {
     public function index(Request $request)
     {
-        $data = $request->all();
-        if (isset($data['vnp_TransactionStatus']) && $data['vnp_TransactionStatus'] == '00') {
-            $payment = PaymentTransaction::where('txnref', $data['vnp_TxnRef'])->first();
-            if ($payment) {
-                $payment->bank_code = $data['vnp_BankCode'];
-                $payment->transaction_no = $data['vnp_TransactionNo'];
-                $payment->card_type = $data['vnp_CardType'];
-                $payment->status = 'APPROVED';
-                $payment->save();
-            }
-        }
-
-
-        $payments = PaymentTransaction::whereRaw(1);
+        $transactions = Transaction::whereRaw(1);
         if ($request->service) {
-            $payments->where('service',$request->service);
+            $transactions->where('service', $request->service);
         }
         if ($request->service_code) {
-            $payments->where('service_code', 'like', '%' . $request->service_code . '%');
+            $transactions->where('service_code', 'like', '%' . $request->service_code . '%');
         }
-        $payments = $payments->orderByDesc('id')->paginate(30);
-
+        $transactions = $transactions->orderByDesc('id')->paginate(30);
         $viewData = [
-            'payments' => $payments,
-            'query'    => $request->query()
+            'transactions' => $transactions,
+            'query'        => $request->query()
         ];
 
         return view('payment.index', $viewData);

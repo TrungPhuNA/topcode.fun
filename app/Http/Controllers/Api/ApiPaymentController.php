@@ -3,14 +3,55 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RequestValidateAddPayment;
 use App\Models\PaymentTransaction;
 use App\Service\ServiceCheckTest;
+use App\Services\PayPalService;
+use App\Services\TransactionService;
+use App\Services\VnPayService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class ApiPaymentController extends Controller
 {
+    public function processPayment(RequestValidateAddPayment $request)
+    {
+        try{
+            $data = [];
+            $service = $request->service;
+
+            TransactionService::createTransaction([
+                'language'      => $request->language,
+                'partner_code'  => $request->partner_code,
+                'service'       => $request->service,
+                'identifier_id' => $request->identifier_id,
+                'amount'        => $request->amount,
+                'created_at'    => Carbon::now()
+            ]);
+            switch ($service)
+            {
+                case "MOMO":
+                    $data = [];
+                    break;
+
+                case "PAYPAL":
+                    $data = PayPalService::processCreateLink($request);
+                    break;
+
+                case "VNPAY":
+                    $data = VnPayService::processCreateLink($request);
+                    break;
+            }
+        }catch (\Exception $exception){
+            Log::error("ERROR => ApiPaymentController@processPayment => " . $exception->getMessage());
+        }
+
+        return response()->json([
+            'data' => $data
+        ]);
+    }
+
     public function add(Request $request)
     {
         try {

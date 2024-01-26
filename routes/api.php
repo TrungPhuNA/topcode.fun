@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('v1/payment/add','Api\ApiPaymentController@add');
 Route::post('v1/payment/add','Api\ApiPaymentController@add');
+
+Route::post('v2/payment/add','Api\ApiPaymentController@processPayment');

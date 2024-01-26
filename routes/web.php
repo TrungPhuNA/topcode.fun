@@ -31,6 +31,7 @@ Route::get('/', function () {
 });
 Route::get('view-logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 
+Route::get('transactions', [\App\Http\Controllers\Payment\PaymentController::class, 'index']);
 Route::group(['prefix' => 'payment','namespace' => 'Payment'], function(){
     Route::get('','PaymentController@index')->name('get.payment.index');
     Route::get('create','PaymentController@create');
