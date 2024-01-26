@@ -2,7 +2,6 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <h2>Danh sách thanh toán</h2>
-        <a href="/payment/create">Thêm mới</a>
     </div>
     <div>
         <form class="form-inline">
